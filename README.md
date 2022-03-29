@@ -72,4 +72,9 @@ Clone repo, setting up, install software, create DB, looking around and running 
 have versioning for each package (in case they are managed by different teams, for example). 
 - Something like `/user/v1/:id/details` might be better.
 - Potential improvements to the db schemas, `expenses.status` column is varchar(100). It could be a foreign key 
-reference to a `status` table that contains all possible statuses. Same for `users.company_name` column.
+reference to a `status` table that contains all possible statuses. Same for `users.company_name` column and 
+`expenses.user_id`
+
+### 2nd session (1.5 hours)
+- Setting up basic expense domain as a starting point.
+- I might need to consolidate both formatter.ts into 1 file under `packages/utils`
