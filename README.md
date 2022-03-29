@@ -56,3 +56,20 @@ The command above will run the following test suites sequentially:
 
 
 Happy hacking 😁!
+
+
+---
+## Notes
+### 1st session (1 hour)
+Clone repo, setting up, install software, create DB, looking around and running initial code.
+- Fix `TypeError: res.status is not a function` error by adding nextFunction
+- Need to remove straight SQL queries from db-user.ts (`"SELECT * FROM USERS"`) by creating models -> typeorm
+- Investigate https support
+- Add more checks to security.ts
+- API routes don't seem optimal, something like `/v1/users/:id/details` would be better than
+`/user/v1/get-user-details/?userId=d`. 
+- I understand the `/user`route is implemented as its own package within the monorepo architecture, so it is good to 
+have versioning for each package (in case they are managed by different teams, for example). 
+- Something like `/user/v1/:id/details` might be better.
+- Potential improvements to the db schemas, `expenses.status` column is varchar(100). It could be a foreign key 
+reference to a `status` table that contains all possible statuses. Same for `users.company_name` column.

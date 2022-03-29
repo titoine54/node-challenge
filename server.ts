@@ -31,7 +31,7 @@ app.use(security);
 
 app.use('/user', userRoutes);
 
-app.use(function(err, req, res) {
+app.use(function(err: express.ErrorRequestHandler, req: express.Request, res: express.Response, next: express.NextFunction) {
   res.status(500).json(err);
 });
 

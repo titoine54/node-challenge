@@ -6,6 +6,8 @@ module.exports = {
     host: '0.0.0.0',
     port: 5432,
     database: 'challenge',
+    user: 'challenge',
+    password: 'challenge',
   },
   debug: {
     stackSize: 4,
