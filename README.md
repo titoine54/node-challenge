@@ -76,5 +76,6 @@ reference to a `status` table that contains all possible statuses. Same for `use
 `expenses.user_id`
 
 ### 2nd session (1.5 hours)
-- Setting up basic expense domain as a starting point.
+- Setting up basic expense domain as a starting point. Major refactoring to come :)
 - I might need to consolidate both formatter.ts into 1 file under `packages/utils`
+- Field validation -> allow negative numbers for `expenses.amounts_in_cents` ?
