@@ -68,7 +68,7 @@ Clone repo, setting up, install software, create DB, looking around and running 
 - Add more checks to security.ts
 - API routes don't seem optimal, something like `/v1/users/:id/details` would be better than
 `/user/v1/get-user-details/?userId=d`. 
-- I understand the `/user`route is implemented as its own package within the monorepo architecture, so it is good to 
+- I understand the `/user` route is implemented as its own package within the monorepo architecture, so it is good to 
 have versioning for each package (in case they are managed by different teams, for example). 
 - Something like `/user/v1/:id/details` might be better.
 - Potential improvements to the db schemas, `expenses.status` column is varchar(100). It could be a foreign key 
@@ -91,3 +91,11 @@ Setting up ORM for database operations
 - Just noticed that the error return through ApiError function are giving away too much information, i.e.: the string 
 of the SQL query (SELECT * from <table_name> ...) gives information on the structure of our databse to the users,
 which can be dangerous
+
+### 4th session (1 hour)
+- Migrated user domain to typeorm. I reused the formatter display the correct columns and capitalize. Another option
+would be to only select these columns in the `find()` statement + capitalize the result directly with a `.then()` or 
+something
+- I decided to change the `expense/v1/expenses/:user_id` route to `expense/v1/expenses/user/:user_id` in order to make
+it clearer that we are getting the users expenses. I also added `expense/v1/expenses/:expense_id`.
+- Added type definitions on the controllers so that the TS gods stay happy.

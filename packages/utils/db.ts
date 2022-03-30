@@ -1,6 +1,7 @@
 import config from 'config';
 import { DataSource } from 'typeorm';
 import { Expenses } from '../domains/expense/entities/Expenses';
+import { Users } from '../domains/user/entities/Users';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -9,7 +10,7 @@ export const AppDataSource = new DataSource({
   username: config.db.username,
   password: config.db.password,
   database: config.db.database,
-  entities: [Expenses],
+  entities: [Expenses,Users],
   logging: false,
 });
 
