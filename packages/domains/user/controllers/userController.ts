@@ -1,11 +1,13 @@
+import { getParams } from '@nc/utils/parse-url-params';
 import { Users } from '../entities/Users';
 import { AppDataSource } from '@nc/utils/db';
 import { to } from '@nc/utils/async';
 import { InternalError, NotFound } from '@nc/utils/errors';
 
-export async function getAllUsers(): Promise <Users[]> {
+export async function getAllUsers(query): Promise <Users[]> {
+  const params = getParams(query);
   const ExpensesRepository = AppDataSource.getRepository(Users);
-  const [error, users] = await to(ExpensesRepository.find());
+  const [error, users] = await to(ExpensesRepository.find(params));
 
   if (error) {
     throw InternalError(`Error fetching data from the DB: ${error.message}`);

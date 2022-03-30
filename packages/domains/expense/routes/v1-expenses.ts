@@ -6,7 +6,7 @@ import { to } from '@nc/utils/async';
 export const router = Router();
 
 router.get('/expenses', async (req, res, next) => {
-  const [error, response] = await to(getAllExpenses());
+  const [error, response] = await to(getAllExpenses(req.query));
 
   if (error) {
     return next(new ApiError(error, error.status, `Could not get expense details: ${error}`, error.title, req));
@@ -16,7 +16,7 @@ router.get('/expenses', async (req, res, next) => {
 });
 
 router.get('/expenses/:expense_id', async (req, res, next) => {
-  const [error, response] = await to(getExpense(req.params.expense_id));
+  const [error, response] = await to(getExpense(req.query, req.params.expense_id));
 
   if (error) {
     return next(new ApiError(error, error.status, `Could not get expense details: ${error}`, error.title, req));
@@ -26,7 +26,7 @@ router.get('/expenses/:expense_id', async (req, res, next) => {
 });
 
 router.get('/expenses/user/:user_id', async (req, res, next) => {
-  const [error, response] = await to(getUserExpenses(req.params.user_id));
+  const [error, response] = await to(getUserExpenses(req.query, req.params.user_id));
 
   if (error) {
     return next(new ApiError(error, error.status, `Could not get expense details: ${error}`, error.title, req));

@@ -61,7 +61,7 @@ Happy hacking 😁!
 ---
 ## Notes
 ### 1st session (1 hour)
-Clone repo, setting up, install software, create DB, looking around and running initial code.
+Summary: Clone repo, setting up, install software, create DB, looking around and running initial code.
 - Fix `TypeError: res.status is not a function` error by adding nextFunction
 - Need to remove straight SQL queries from db-user.ts (`"SELECT * FROM USERS"`) by creating models -> typeorm
 - Investigate https support
@@ -76,6 +76,7 @@ reference to a `status` table that contains all possible statuses. Same for `use
 `expenses.user_id`
 
 ### 2nd session (1.5 hours)
+Summary: Creating expense domain
 - Setting up basic expense domain as a starting point. Major refactoring to come :)
 - I might need to consolidate both formatter.ts into 1 file under `packages/utils`
 - Field validation -> allow negative numbers for `expenses.amounts_in_cents` ?
@@ -83,19 +84,22 @@ reference to a `status` table that contains all possible statuses. Same for `use
 return all expense`)
 
 ### 3rd session (2 hours)
-Setting up ORM for database operations
+Summary : Setting up ORM for database operations
 - Set up typeorm for expense domain and adding 2 basic queries
 - Got rid of the 'get-*' part of the routes. It is unnecessary, since we know what type of action to do based on the
  HTTP query (GET, POST, PUT, DELETE, etc)
-- Cleanup of unused or unnecessary code and rearranged the folders for the expense domain into a MVC-like structure.
-- Just noticed that the error return through ApiError function are giving away too much information, i.e.: the string 
-of the SQL query (SELECT * from <table_name> ...) gives information on the structure of our databse to the users,
-which can be dangerous
+- Cleanup of unused or unnecessary code and rearranged the folders for the expense domain into a MVC-like structure
 
 ### 4th session (1 hour)
+Summary: Work on user domain and other fix and improvments
 - Migrated user domain to typeorm. I reused the formatter display the correct columns and capitalize. Another option
 would be to only select these columns in the `find()` statement + capitalize the result directly with a `.then()` or 
 something
 - I decided to change the `expense/v1/expenses/:user_id` route to `expense/v1/expenses/user/:user_id` in order to make
 it clearer that we are getting the users expenses. I also added `expense/v1/expenses/:expense_id`
 - Added type definitions on the controllers so that the TS gods stay happy
+
+### 5th session (2 hours)
+Summary: Created and tested (manually) paging, sorting and filtering.
+- Added paging, filtering and sorting in the package utils + testing
+- Need to write tests for my routes that covers all cases

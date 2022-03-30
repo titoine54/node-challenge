@@ -7,7 +7,7 @@ import { to } from '@nc/utils/async';
 export const router = Router();
 
 router.get('/users', async (req, res, next) => {
-  const [error, response] = await to(getAllUsers());
+  const [error, response] = await to(getAllUsers(req.query));
 
   if (error) {
     return next(new ApiError(error, error.status, `Could not get user details: ${error}`, error.title, req));
