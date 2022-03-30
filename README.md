@@ -99,7 +99,32 @@ something
 it clearer that we are getting the users expenses. I also added `expense/v1/expenses/:expense_id`
 - Added type definitions on the controllers so that the TS gods stay happy
 
-### 5th session (2 hours)
+### 5th session (1.5 hours)
 Summary: Created and tested (manually) paging, sorting and filtering.
 - Added paging, filtering and sorting in the package utils + testing
 - Need to write tests for my routes that covers all cases
+
+### 6th session (0.5 hour)
+Summary: Created tests
+- Added unit tests for parse-url-params and acceptance test for the expense and user routes
+- Added API documentation
+
+## Final Notes :)
+The Challenge was definitely fun to do. Most of my experience in node was with `npm`, but I found that `yarn`
+was as easy to use. The "recorded time" for the different sessions are not super accurate, as I took some time to look 
+up a bunch of things out of curiosity, like : "What are the Pros and Cons of using a monorepo ?" or comparing ORMs.
+
+
+I noted a couple of things that I would add to improve this app, if I had the time:
+- Integrate authentication and authorization with something like Passport (https://www.npmjs.com/package/passport)
+in order to restrict the access to the api to the users that are logged in, but also to restrain access to routes
+that are more for "admins" like `/user/v1/users`. More security and validation around the routes and what can be 
+submitted would also be a good thing.
+- Add routes that would make it possible to do CRUD operations on the DB through POST, PUT, DELETE, etc.
+- Foreign keys in the DB schema (i.e.: foreign key from `expenses.user_id` to `user.id`) and other improvements like
+creating a seperate table to hold all the possible expenses status as text and refer to the `status.id` in the expenses
+table rather than having a varchar `expenses.status`.
+- Add more acceptance/integration tests to cover every single route and unit test to cover all controllers and functions
+within the utils. Gotta keep that code coverage up.
+
+Thank you for the opportunity, and I look forward to speaking with you again :)

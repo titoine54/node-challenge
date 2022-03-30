@@ -1,0 +1,6 @@
+GET - /user/v1/users - get all users
+GET - /user/v1/users/:id - get user
+
+GET - /expanse/v1/expanses - get all expanses
+GET - /expanse/v1/expanses/:expanse_id - get expanse
+GET - /expanse/v1/expanses/user/:user_id - get all expanses for a user
