@@ -97,5 +97,5 @@ which can be dangerous
 would be to only select these columns in the `find()` statement + capitalize the result directly with a `.then()` or 
 something
 - I decided to change the `expense/v1/expenses/:user_id` route to `expense/v1/expenses/user/:user_id` in order to make
-it clearer that we are getting the users expenses. I also added `expense/v1/expenses/:expense_id`.
-- Added type definitions on the controllers so that the TS gods stay happy.
+it clearer that we are getting the users expenses. I also added `expense/v1/expenses/:expense_id`
+- Added type definitions on the controllers so that the TS gods stay happy
