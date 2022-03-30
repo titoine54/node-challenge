@@ -1,15 +1,17 @@
-import { Client } from 'pg';
 import config from 'config';
+import { DataSource } from 'typeorm';
+import { Expenses } from '../domains/expense/entities/Expenses';
 
-let db;
+export const AppDataSource = new DataSource({
+  type: 'postgres',
+  host: config.db.host,
+  port: config.db.port,
+  username: config.db.username,
+  password: config.db.password,
+  database: config.db.database,
+  entities: [Expenses],
+  logging: false,
+});
 
-export function connect() {
-  db = new Client(config.db);
-  return db.connect();
-}
-
-export async function query(queryString: string, parameters?: any) {
-  if (!db) await connect();
-
-  return db.query(queryString, parameters);
-}
+// eslint-disable-next-line no-console
+AppDataSource.initialize().then(() => {}).catch((error) => console.log(error));

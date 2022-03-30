@@ -79,3 +79,15 @@ reference to a `status` table that contains all possible statuses. Same for `use
 - Setting up basic expense domain as a starting point. Major refactoring to come :)
 - I might need to consolidate both formatter.ts into 1 file under `packages/utils`
 - Field validation -> allow negative numbers for `expenses.amounts_in_cents` ?
+- Need to add API documentation -> text file containing a summary of the available routes. Something like : `GET /expense/v1/expense ->
+return all expense`)
+
+### 3rd session (2 hours)
+Setting up ORM for database operations
+- Set up typeorm for expense domain and adding 2 basic queries
+- Got rid of the 'get-*' part of the routes. It is unnecessary, since we know what type of action to do based on the
+ HTTP query (GET, POST, PUT, DELETE, etc)
+- Cleanup of unused or unnecessary code and rearranged the folders for the expense domain into a MVC-like structure.
+- Just noticed that the error return through ApiError function are giving away too much information, i.e.: the string 
+of the SQL query (SELECT * from <table_name> ...) gives information on the structure of our databse to the users,
+which can be dangerous

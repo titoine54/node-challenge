@@ -7,6 +7,8 @@ interface ConfigDefinition {
         cert?: string
     }
     db: {
+        password: string | (() => string) | (() => Promise<string>);
+        username: string;
         host: string
         port: number
         database: string
